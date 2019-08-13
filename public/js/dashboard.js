@@ -1,5 +1,5 @@
 const API_URL = window.location.href;
-
+import Button from 'react-bootstrap/Button';
 class Dashboard extends React.Component {
   state = {
     question: []
@@ -26,6 +26,13 @@ class Dashboard extends React.Component {
             </div>
           </div>
         ))}
+        <div>
+        <ButtonGroup aria-label="Basic example">
+          <Button variant="secondary">Left</Button>
+          <Button variant="secondary">Middle</Button>
+          <Button variant="secondary">Right</Button>
+        </ButtonGroup>
+        </div>
         </div>
        </div>
     )
