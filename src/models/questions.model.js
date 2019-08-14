@@ -5,25 +5,38 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const question = sequelizeClient.define('question', {
+  const questions = sequelizeClient.define('questions', {
     // id | user_id |   content    |          created_at
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
+      field: 'question_uuid',
+      type: Sequelize.UUIDV4,
+      primaryKey: true
+    },
+    raised_by_user_uuid: {
+      type: Sequelize.UUIDV4,
       allowNull: false
     },
-    user_id: {
-      type: DataTypes.INTEGER,
+    question_context: {
+      type: Sequelize.TEXT,
       allowNull: false
     },
-    content: {
-      type: DataTypes.STRING,
+    question_group: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    is_deleted: {
+      type: Sequelize.BOOLEAN,
       allowNull: false
     },
     created_at: {
       field: 'created_at',
-      type: 'TIMESTAMP',
+      type: Sequelize.NOW,
+      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      allowNull: false
+    },
+    updated_at: {
+      field: 'updated_at',
+      type: Sequelize.NOW,
       defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       allowNull: false
     }
@@ -41,10 +54,14 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  question.associate = function (models) {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+  questions.associate = function (models) {
+
+      questions.hasMany(models.anwsers, {
+        as: 'q_answer',
+        foreignKey: 'question_uuid'
+        
+    });
   };
 
-  return question;
+  return questions;
 };

@@ -1,7 +1,7 @@
-// Initializes the `question` service on path `/question`
+// Initializes the `answer` service on path `/answer`
 const createService = require('feathers-sequelize');
-const createModel = require('../../models/question.model');
-const hooks = require('./question.hooks');
+const createModel = require('../../models/answers.model');
+const hooks = require('./answers.hooks');
 
 module.exports = function (app) {
   const Model = createModel(app);
@@ -13,10 +13,10 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/question', createService(options));
+  app.use('/answers', createService(options));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('question');
+  const service = app.service('answers');
 
   service.hooks(hooks);
 };
