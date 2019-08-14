@@ -5,8 +5,9 @@
     "mocha": true
   },
   "parserOptions": {
-    "ecmaVersion": 2017
+    "ecmaVersion": 6
   },
+  "parser": "babel-eslint",
   "extends": "eslint:recommended",
   "rules": {
     "indent": [
