@@ -1,11 +1,17 @@
 # dhk
 
-requirement
+requirement:
+
 node
+
 feathers
+
 react
+
 react-bootstrap
+
 webpack
+
 
 ## License
 
