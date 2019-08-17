@@ -2,6 +2,8 @@ const authentication = require('@feathersjs/authentication');
 const jwt = require('@feathersjs/authentication-jwt');
 const local = require('@feathersjs/authentication-local');
 
+const errors = require('feathers-errors');
+const _ = require('lodash');
 
 module.exports = function (app) {
   const config = app.get('authentication');
@@ -21,6 +23,21 @@ module.exports = function (app) {
       ],
       remove: [
         authentication.hooks.authenticate('jwt')
+      ]
+    },
+    after: {
+      create: [
+        hook => {
+
+          if(!_.get(hook, 'params.user')) {
+            return Promise.reject(new errors.Forbidden('Credentials incorrect'));
+          }
+
+          hook.result.user = hook.params.user;
+
+          // Don't expose sensitive information.
+          delete hook.result.user.password;
+        }
       ]
     }
   });

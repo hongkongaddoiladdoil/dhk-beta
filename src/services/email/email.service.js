@@ -1,7 +1,6 @@
-// Initializes the `mailer` service on path `/mailer`
-const createService = require('./mailer.class.js');
-const hooks = require('./mailer.hooks');
-const Mailer = require('feathers-mailer');
+// Initializes the `Email` service on path `/email`
+const hooks = require('./email.hooks');
+const Mailer  = require('feathers-mailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 
 module.exports = function (app) {
@@ -11,16 +10,17 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/mailer', Mailer(smtpTransport({
+  app.use('/email', Mailer(smtpTransport({
     service: 'Gmail',
     auth: {
-      user: app.get('emailAddress'),
-      pass: app.get('emailPassword')
+      user: process.env.EMAIL_ADDRESS,
+      pass: process.env.EMAIL_PASSWORD
     }
   })));
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('mailer');
+  const service = app.service('email');
 
   service.hooks(hooks);
+
 };

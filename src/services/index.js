@@ -1,9 +1,15 @@
 const question = require('./question/question.service.js');
 const users = require('./users/users.service.js');
-const mailer = require('./mailer/mailer.service.js');
+const email = require('./email/email.service.js');
+const authManagement = require('./authManagement/authManagement.service.js');
+const roles = require('./roles/roles.service.js');
+const settings = require('./settings/settings.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(question);
   app.configure(users);
-  app.configure(mailer);
+  app.configure(email);
+  app.configure(authManagement);
+  app.configure(roles);
+  app.configure(settings);
 };
