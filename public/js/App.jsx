@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactBootstrap, {
   Jumbotron, Button, Col, Grid, Panel, Form, FormGroup, ButtonToolbar,
-  ListGroup, Tab, Tabs, Row, Nav, TabContainer, TabContent, TabPane
+   Row, Nav, TabContainer, TabContent, TabPane
 } from 'react-bootstrap'
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Questions from './Questions.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class App extends React.Component {
             <Col sm={9}>
               <TabContent>
                 <TabPane eventKey="login"><p>hi login</p></TabPane>
-                <TabPane eventKey="questions"><p>hi question</p></TabPane>
+                <TabPane eventKey="questions"><Questions /></TabPane>
                 <TabPane eventKey="ask"><p>hi ask</p></TabPane>
                 <TabPane eventKey="answer"><p>hi answer</p></TabPane>
               </TabContent>
