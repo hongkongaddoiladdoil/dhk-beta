@@ -10,6 +10,7 @@ module.exports = function (app) {
     id: {
       field: 'question_uuid',
       type: Sequelize.UUIDV4,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true
     },
     raised_by_user_uuid: {
@@ -56,7 +57,7 @@ module.exports = function (app) {
   // eslint-disable-next-line no-unused-vars
   questions.associate = function (models) {
 
-      questions.hasMany(models.anwsers, {
+      questions.hasMany(models.answers, {
         as: 'q_answer',
         foreignKey: 'question_uuid'
         

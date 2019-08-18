@@ -5,10 +5,11 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const answers = sequelizeClient.define('anwsers', {
+  const answers = sequelizeClient.define('answers', {
     id: {
       field: 'answer_uuid',
       type: Sequelize.UUIDV4,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true
     },
     question_uuid: {
