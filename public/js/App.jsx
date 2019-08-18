@@ -1,73 +1,46 @@
-import React from 'react'
-import ReactBootstrap, {Jumbotron, Button, Col, Grid, Panel, Form, FormGroup, ButtonToolbar} from 'react-bootstrap'
-import PropTypes from 'prop-types';
-import axios from 'axios';
+import React from 'react';
+import ReactBootstrap, {Jumbotron, Button, Col, Grid, Panel, Form, FormGroup, ButtonToolbar} from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import About from './about';
+import Signup from './signup';
+import Dashboard from './dashboard';
+import PostQuestion from './postQuestion';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: [],
-      questionToSubmit: '',
-      userIdToSubmit: ''
-    };
-  }
-  componentDidMount() {
-    axios.get('/question').then(response => response.data.data)
-      .then((data) => {
-        this.setState({ question: data })
-      })
-  }
-
-  onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-  onSubmit = (e) => {
-    e.preventDefault();
-    // get our form data out of state
-    const userIdToSubmit = this.state.userIdToSubmit;
-    const questionToSubmit = this.state.questionToSubmit;
-
-    axios.post('/question', { user_id: userIdToSubmit, content: questionToSubmit })
-      .then((result) => {
-        console.log(result);
-      });
-  }
   render() {
-    const userIdToSubmit = this.state.userIdToSubmit;
-    const questionToSubmit = this.state.questionToSubmit;
     return (
       <div className="container">
         <div className="col-xs-8">
-          <h1>List of Question</h1>
-          {this.state.question.map((question) => (
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">User: {question.user_id} Q: {question.content}</h5>
-              </div>
+
+          <Router>
+            <div>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/signup">Sign Up</Link>
+                </li>
+                <li>
+                  <Link to="/postQuestion">Ask</Link>
+                </li>
+              </ul>
+
+              <hr />
+              <Route exact path="/" component={Dashboard} />
+              <Route path="/about" component={About} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/postQuestion" component={PostQuestion} />
             </div>
-          ))}
-          <br/>
-          <div>
-            <Form onSubmit={this.onSubmit}>
-              <Form.Group>
-                <Form.Control type="text" placeholder="User ID" name="userIdToSubmit" value={userIdToSubmit} onChange={this.onChange}/>
-                <Form.Label>Question</Form.Label>
-                <Form.Control as="textarea" rows="3"
-                  name="questionToSubmit"
-                  value={questionToSubmit}
-                  placeholder = "Question"
-                  onChange={this.onChange} />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-          </div>
+          </Router>
+
         </div>
       </div>
     )
   }
-};
+}
 
 export default App
