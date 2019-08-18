@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactBootstrap, {Jumbotron, Button, Col, Grid, Panel, Form, FormGroup, ButtonToolbar} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {withRouter} from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -29,8 +29,7 @@ class PostQuestion extends React.Component {
       .then((result) => {
         console.log(result);
       });
-
-    this.props.history.push('/');
+      this.props.history.push('/submitted');
   }
   render() {
     const userIdToSubmit = this.state.userIdToSubmit;

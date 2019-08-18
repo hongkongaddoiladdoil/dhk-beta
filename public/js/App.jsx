@@ -5,6 +5,7 @@ import About from './about';
 import Signup from './signup';
 import Dashboard from './dashboard';
 import PostQuestion from './postQuestion';
+import Submitted from './submitted';
 
 class App extends React.Component {
   render() {
@@ -34,6 +35,7 @@ class App extends React.Component {
               <Route path="/about" component={About} />
               <Route path="/signup" component={Signup} />
               <Route path="/postQuestion" component={PostQuestion} />
+              <Route path="/submitted" component={Submitted} />
             </div>
           </Router>
 
