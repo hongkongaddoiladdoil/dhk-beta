@@ -19,7 +19,6 @@ const channels = require('./channels');
 const sequelize = require('./sequelize');
 
 const authentication = require('./authentication');
-
 const app = express(feathers());
 
 // Load app configuration
@@ -49,7 +48,7 @@ app.configure(services);
 app.configure(channels);
 
 // Configure a middleware for 404s and the error handler
-// app.use(express.notFound());
+app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);

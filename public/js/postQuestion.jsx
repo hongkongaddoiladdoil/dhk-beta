@@ -13,9 +13,6 @@ class PostQuestion extends React.Component {
       userIdToSubmit: ''
     };
   }
-  componentDidMount() {
-  }
-
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }

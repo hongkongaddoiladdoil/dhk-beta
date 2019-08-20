@@ -6,6 +6,7 @@ import Signup from './signup';
 import Dashboard from './dashboard';
 import PostQuestion from './postQuestion';
 import Submitted from './submitted';
+import EmailSent from './emailSent';
 
 class App extends React.Component {
   render() {
@@ -36,6 +37,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup} />
               <Route path="/postQuestion" component={PostQuestion} />
               <Route path="/submitted" component={Submitted} />
+              <Route path="/emailSent" component={EmailSent} />
             </div>
           </Router>
 

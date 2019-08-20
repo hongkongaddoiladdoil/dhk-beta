@@ -9,14 +9,6 @@ module.exports = function (app) {
     paginate
   };
 
-  // Initialize our service with any options it requires
-  // app.use('/email', Mailer(smtpTransport({
-  //   service: 'Gmail',
-  //   auth: {
-  //     user: process.env.EMAIL_ADDRESS,
-  //     pass: process.env.EMAIL_PASSWORD
-  //   }
-  // })));
   app.use('/email', Mailer(smtpTransport({
     host: 'smtp.gmail.com',
     port: 465,

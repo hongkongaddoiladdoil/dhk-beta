@@ -38,7 +38,7 @@ class Signup extends React.Component {
       console.log(result);
     });
 
-    this.props.history.push('/submitted');
+    this.props.history.push('/emailSent');
   }
   render() {
     const usernameToSubmit = this.state.usernameToSubmit;
