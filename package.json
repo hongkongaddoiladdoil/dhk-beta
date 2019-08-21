@@ -58,6 +58,7 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "pg": "^7.12.1",
     "pug": "^2.0.4",
+    "query-string": "^5.1.1",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.11",
     "react-dom": "^16.9.0",
