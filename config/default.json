@@ -2,9 +2,35 @@
   "host": "localhost",
   "port": 3030,
   "public": "../public/",
+  "src": "../src/",
+  "protocol" : "http",
   "paginate": {
     "default": 10,
     "max": 50
+  },
+  "authentication": {
+    "secret": "4cd941308358c6b0dad2ea7a3603d027bb0bca10728617ca4a44fe57810ef6a6ee52033e38208b8c75f3a85fc07192efed80c0503302debb5b3a5520ae64b0df8ad9a3cbfa7a70bb3581659eaa6487c390b68d5f2cd3a1158e745c20b2cb18516d241a5c7ef07364c498a64da8786d37d6d1662efc0023e3402c6957cf3c1ac8136570c9dc4417a5dcd5875172d683116654fba652a3ca7e1d2f2db687c81f2d9ec7e051ae0e8c98381b01a0b875e7ea8b5f8f5d36730a01efe82621f4445eb927832f033ab0b0b35240520832eb06fe56fae3308a26efca9e6718fbeb60e0b4049dbbb97ad86292419a27ba396fdd13d03e6a596ff9c8e38663161d21f93936",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://localhost",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
   },
   "postgres": "postgres://postgres:2019@localhost:5432/dhk"
 }
