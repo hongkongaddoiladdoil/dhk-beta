@@ -1,7 +1,14 @@
 /* eslint-disable no-unused-vars */
+
 class Service {
+
   constructor (options) {
     this.options = options || {};
+    this.state = {
+    }
+  }
+  setup(app) {
+    this.app = app;
   }
 
   async find (params) {
@@ -10,14 +17,19 @@ class Service {
   }
 
   async get (id, params) {
-    console.log('get' + id + params);
+    console.log(id);
+    const authManagement = this.app.service('authManagement');
+    authManagement.create({
+      action: 'verifySignupLong',
+      value: id
+    });
     return {
-      id, text: 'A new message with ID: ${id}!'
+      id
     };
   }
 
   async create (data, params) {
-    console.log('create' + data + params);
+    console.log('create' + data);
     if (Array.isArray(data)) {
       return Promise.all(data.map(current => this.create(current, params)));
     }

@@ -26,7 +26,7 @@ class PostQuestion extends React.Component {
       .then((result) => {
         console.log(result);
       });
-      this.props.history.push('/submitted');
+    this.props.history.push('/submitted');
   }
   render() {
     const userIdToSubmit = this.state.userIdToSubmit;
