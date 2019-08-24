@@ -5,6 +5,7 @@ import About from './about';
 import Signup from './signup';
 import Dashboard from './dashboard';
 import PostQuestion from './postQuestion';
+import PostAnswer from './postAnswer';
 import Submitted from './submitted';
 import EmailSent from './emailSent';
 import Qa from './qa';
@@ -23,6 +24,7 @@ class App extends React.Component {
                   <NavLink to="/about"><Nav.Item>About</Nav.Item></NavLink>
                   <NavLink to="/signup"><Nav.Item>Sign Up</Nav.Item></NavLink>
                   <NavLink to="/postQuestion"><Nav.Item>Ask</Nav.Item></NavLink>
+                  <NavLink to="/postAnswer"><Nav.Item>Answer</Nav.Item></NavLink>
                 </Nav>
               </Col>
               <Col sm={9}>
@@ -33,6 +35,7 @@ class App extends React.Component {
                 <Route path="/submitted" component={Submitted} />
                 <Route path="/emailSent" component={EmailSent} />
                 <Route path="/qa" component={Qa} />
+                <Route path="/postAnswer" component={PostAnswer} />
               </Col>
             </Row>
           </Router>
