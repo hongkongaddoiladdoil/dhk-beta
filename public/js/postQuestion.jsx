@@ -17,14 +17,13 @@ class PostQuestion extends React.Component {
   }
   onSubmit = (e) => {
     e.preventDefault();
-
     const userIdToSubmit = this.state.userIdToSubmit;
     const questionToSubmit = this.state.questionToSubmit;
     feathersClient.service('questions')
       .create({ user_id: userIdToSubmit, content: questionToSubmit })
       .then((result) => {console.log(result);});
-
-    this.props.history.push('/submitted');
+    // this.props.history.push('/submitted');
+    this.props.history.goBack();
   }
   render() {
     const userIdToSubmit = this.state.userIdToSubmit;
