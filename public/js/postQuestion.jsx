@@ -2,8 +2,7 @@ import React from 'react';
 import ReactBootstrap, {Jumbotron, Button, Col, Grid, Panel, Form, FormGroup, ButtonToolbar} from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import PropTypes from 'prop-types';
-import axios from 'axios';
+import feathersClient from './feathers';
 
 class PostQuestion extends React.Component {
   constructor(props) {
@@ -18,14 +17,13 @@ class PostQuestion extends React.Component {
   }
   onSubmit = (e) => {
     e.preventDefault();
-    // get our form data out of state
+
     const userIdToSubmit = this.state.userIdToSubmit;
     const questionToSubmit = this.state.questionToSubmit;
+    feathersClient.service('questions')
+      .create({ user_id: userIdToSubmit, content: questionToSubmit })
+      .then((result) => {console.log(result);});
 
-    axios.post('/question', { user_id: userIdToSubmit, content: questionToSubmit })
-      .then((result) => {
-        console.log(result);
-      });
     this.props.history.push('/submitted');
   }
   render() {

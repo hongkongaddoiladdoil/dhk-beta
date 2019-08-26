@@ -37,7 +37,7 @@ module.exports = function(app) {
       switch (type) {
       case 'resendVerifySignup': // send another email with link for verifying user's email addr
 
-        hashLink = getLink('verify', user.verifyToken);
+        hashLink = getLink('signup-verify', user.verifyToken);
 
         templatePath = path.join(emailAccountTemplatesPath, 'verify-email.pug');
 
@@ -60,7 +60,7 @@ module.exports = function(app) {
         break;
       case 'verifySignup': // inform that user's email is now confirmed
 
-        hashLink = getLink('verify', user.verifyToken);
+        hashLink = getLink('signup-verify', user.verifyToken);
 
         templatePath = path.join(emailAccountTemplatesPath, 'email-verified.pug');
 

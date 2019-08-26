@@ -1,18 +1,14 @@
 /* eslint-disable no-unused-vars */
-
 class Service {
-
   constructor (options) {
     this.options = options || {};
-    this.state = {
-    }
   }
+  
   setup(app) {
     this.app = app;
   }
 
   async find (params) {
-    console.log('find');
     return [];
   }
 
@@ -29,7 +25,6 @@ class Service {
   }
 
   async create (data, params) {
-    console.log('create' + data);
     if (Array.isArray(data)) {
       return Promise.all(data.map(current => this.create(current, params)));
     }

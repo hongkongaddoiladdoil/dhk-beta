@@ -5,8 +5,7 @@ const DataTypes = Sequelize.DataTypes;
 
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
-  const question = sequelizeClient.define('question', {
-    // id | user_id |   content    |          created_at
+  const answers = sequelizeClient.define('answers', {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -14,6 +13,10 @@ module.exports = function (app) {
       allowNull: false
     },
     user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    question_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -27,12 +30,7 @@ module.exports = function (app) {
       defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       allowNull: false
     }
-  },
-  {
-    timestamps: false,
-    underscored : true
-  },
-  {
+  }, {
     hooks: {
       beforeCount(options) {
         options.raw = true;
@@ -41,10 +39,10 @@ module.exports = function (app) {
   });
 
   // eslint-disable-next-line no-unused-vars
-  question.associate = function (models) {
+  answers.associate = function (models) {
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 
-  return question;
+  return answers;
 };
