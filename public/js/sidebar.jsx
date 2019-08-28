@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { slide as Menu } from 'react-burger-menu';
-import Dashboard from './dashboard';
 import '../css/App.css';
 
 class Sidebar extends Component {
@@ -29,12 +28,12 @@ class Sidebar extends Component {
       <div>
         <Menu
           isOpen={this.state.menuOpen}
-          onStateChange={(state) => this.handleStateChange(state)}
-          >
+          onStateChange={(state) => this.handleStateChange(state)} >
           <Link onClick={() => this.closeMenu()} className="menu-item" to="/">Home</Link>
           <Link onClick={() => this.closeMenu()} className="menu-item" to="/about">About</Link>
           <Link onClick={() => this.closeMenu()} className="menu-item" to="/login">Login</Link>
           <Link onClick={() => this.closeMenu()} className="menu-item" to="/signup">Signup</Link>
+          <Link onClick={() => this.closeMenu()} className="menu-item" to="/logout">Logout</Link>
         </Menu>
       </div>
     )
