@@ -2,11 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const htmlPlugin = new HtmlWebPackPlugin();
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   context: path.join(__dirname, 'public/js'),
   entry: {
-    index: './index.jsx',
+    index: ['babel-polyfill','./index.jsx']
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -38,5 +39,5 @@ module.exports = {
       }
     ],
   },
-  plugins: [htmlPlugin]
+  plugins: [htmlPlugin, new Dotenv()]
 };

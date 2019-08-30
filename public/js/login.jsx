@@ -50,6 +50,7 @@ class Login extends React.Component {
     return(
       <div className="container">
         <div className="col-xs-8">
+          <h1>Login</h1>
           <div>
             <Form onSubmit={this.onSubmit}>
               <Form.Group controlId="formEmail">

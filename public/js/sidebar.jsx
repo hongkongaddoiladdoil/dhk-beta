@@ -34,6 +34,7 @@ class Sidebar extends Component {
           <Link onClick={() => this.closeMenu()} className="menu-item" to="/login">Login</Link>
           <Link onClick={() => this.closeMenu()} className="menu-item" to="/signup">Signup</Link>
           <Link onClick={() => this.closeMenu()} className="menu-item" to="/logout">Logout</Link>
+          <Link onClick={() => this.closeMenu()} className="menu-item" to="/postQuestion">Post</Link>
         </Menu>
       </div>
     )
