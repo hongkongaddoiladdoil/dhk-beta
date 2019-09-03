@@ -9,12 +9,13 @@ module.exports = function(app) {
   const returnEmail = app.get('complaint_email') || process.env.COMPLAINT_EMAIL;
 
   function getLink(type, hash) {
-    var url;
-    var port = (app.get('port') === '80' || isProd)? '': ':' + app.get('port');
-    var host = (app.get('host') === 'HOST')? 'localhost': app.get('host');
-    var protocol = (app.get('protocol') === 'PROTOCOL')? 'http': app.get('protocol');
-    protocol += "://";
-    var link = protocol+host+port+'/login'+'/'+type+'/'+hash;
+    var url = window.location.href;
+    // var port = (app.get('port') === '80' || isProd)? '': ':' + app.get('port');
+    // var host = (app.get('host') === 'HOST')? 'localhost': app.get('host');
+    // var protocol = (app.get('protocol') === 'PROTOCOL')? 'http': app.get('protocol');
+    // protocol += "://";
+    // var link = protocol+host+port+'/'+type+'/'+hash;
+    link = url+'/'+type+'/'+hash;
     return link;
   }
 
@@ -37,7 +38,7 @@ module.exports = function(app) {
       switch (type) {
       case 'resendVerifySignup': // send another email with link for verifying user's email addr
 
-        hashLink = getLink('verify', user.verifyToken);
+        hashLink = getLink('signup-verify', user.verifyToken);
 
         templatePath = path.join(emailAccountTemplatesPath, 'verify-email.pug');
 
@@ -60,7 +61,7 @@ module.exports = function(app) {
         break;
       case 'verifySignup': // inform that user's email is now confirmed
 
-        hashLink = getLink('verify', user.verifyToken);
+        hashLink = getLink('signup-verify', user.verifyToken);
 
         templatePath = path.join(emailAccountTemplatesPath, 'email-verified.pug');
 

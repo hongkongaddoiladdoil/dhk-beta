@@ -3,21 +3,28 @@ class Service {
   constructor (options) {
     this.options = options || {};
   }
+  
+  setup(app) {
+    this.app = app;
+  }
 
   async find (params) {
-    console.log('find');
     return [];
   }
 
   async get (id, params) {
-    console.log('get' + id + params);
+    console.log(id);
+    const authManagement = this.app.service('authManagement');
+    authManagement.create({
+      action: 'verifySignupLong',
+      value: id
+    });
     return {
-      id, text: 'A new message with ID: ${id}!'
+      id
     };
   }
 
   async create (data, params) {
-    console.log('create' + data + params);
     if (Array.isArray(data)) {
       return Promise.all(data.map(current => this.create(current, params)));
     }
