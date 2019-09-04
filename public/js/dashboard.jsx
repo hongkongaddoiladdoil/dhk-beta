@@ -3,6 +3,7 @@ import ReactBootstrap, { Jumbotron, Button, Col, Grid, Panel, Form, FormGroup, B
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import feathersClient from './feathers';
+import ContentParser from './contentParser';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Dashboard extends React.Component {
       <Link to={{ pathname: "/qa", search: query }}>
         <Card>
           <Card.Body>
-            <h5 className="card-title">User: {q.user_id} Q: {q.content}</h5>
+            <h5 className="card-title">User: {q.user_id}<ContentParser content={q.content} /></h5>
           </Card.Body>
         </Card>
       </Link>
