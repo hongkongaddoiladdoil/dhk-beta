@@ -40,7 +40,7 @@
     "feathers-sequelize": "^4.1.1",
     "helmet": "^3.20.0",
     "pg": "^7.12.1",
-    "sequelize": "^4.44.2",
+    "sequelize": "^5.15.1",
     "serve-favicon": "^2.5.0",
     "winston": "^3.2.1"
   },
